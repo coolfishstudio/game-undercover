@@ -1,0 +1,26 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>CloudChat</title>
+        <meta charset="UTF-8">
+        <!-- 这个类库是socket.io提供,无需添加,直接引用 -->
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            window.onload = function(){
+                //调用io的connect方法
+                var socket = io.connect();//传入服务器地址 相当于 http://localhost:3000
+
+
+
+                //发起用emit  接收用on
+                socket.emit('online', {user: 'test'+Math.random()*10});
+                socket.on('connected', function(){
+                    console.log('1111');
+                });
+
+            };
+        </script>
+    </body>
+</html>
