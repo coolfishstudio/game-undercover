@@ -15,11 +15,13 @@
 
 
                 //发起用emit  接收用on
-                socket.emit('online', {user: 'test'+Math.random()*10});
-                socket.on('connected', function(){
-                    console.log('1111');
+                socket.emit('online', {user: 'test'+Math.round(Math.random()*10)});
+                socket.on('online', function(obj){
+                    console.log(obj.user + '加入游戏。');
                 });
-
+                socket.on('outline', function(obj){
+                    console.log(obj.user + '离开游戏。');
+                });
             };
         </script>
     </body>

@@ -3,25 +3,3 @@ body{height: 100%;width: 100%;background: #333;}
 a{text-decoration: none;}
 
 
-#contain{
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-#content{
-  position: absolute;
-  top: 0;
-  right: 200px;
-  bottom: 0;
-  left: 0;
-  background: #fff;
-}
-#users_online{
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 200px;
-}
