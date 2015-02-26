@@ -23,14 +23,18 @@ var count = 0;
 io.sockets.on('connection', function(socket){
     //有人上线
     socket.on('online', function(obj){
-        socket.name = obj.user;
+        console.log(obj);
         //检查在线列表
         if(!users[obj.user]){
+            socket.name = obj.user;
             users[obj.user] = obj.user;
             count++;
+            //广播
+            io.emit('online', {users : users, user : obj.user, count : count});
+        }else{
+            socket.emit('onlineError');
         }
-        //广播
-        io.emit('online', {users : users, user : obj.user, count : count});
+        
     });
     //有人说话
     socket.on('say', function(obj){

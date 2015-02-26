@@ -1,28 +1,60 @@
 <!DOCTYPE>
 <html>
     <head>
-        <title>CloudChat</title>
+        <title>test</title>
         <meta charset="UTF-8">
         <!-- 这个类库是socket.io提供,无需添加,直接引用 -->
         <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript" src="/js/client.js"></script>
+        <script type="text/javascript" src="/js/user.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
     </head>
     <body>
-        <script type="text/javascript">
-            window.onload = function(){
-                //调用io的connect方法
-                var socket = io.connect();//传入服务器地址 相当于 http://localhost:3000
+        <!-- <canvas id="playBox" width="1024" height="700"></canvas> -->
 
+        <div id="loginPanel">
+            <div class="logo"></div>
+            <div class="createCharacter">
+                <div class="character"></div>
+                <label id="nameToolTip">请起一个酷酷的名字吧!</label>
+                <input type="text" id="nameinput" placeholder="Name your character" maxlength="15" value="">
+                <div class="play" id="playButton">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div id="playPanel">
+            <div id="canvasborder">
+                <div id="canvas">
+                    <canvas id="background" width="960" height="448"></canvas>
+                    <canvas id="entities" width="960" height="448"></canvas>
+                    <canvas id="foreground" class="clickable" width="960" height="448"></canvas>
+                </div>
+                <div id="bar-container">
+                    <div id="healthbar">
+                    </div>
+                    <div id="hitpoints">
+                    </div>
+                    <div id="weapon"></div>
+                    <div id="armor"></div>
+                    <div id="notifications">
+                        <div>
+                           <span id="message1"></span>
+                           <span id="message2"></span>
+                        </div>
+                    </div>
+                    <div id="playercount" class="clickable">
+                        <span class="count">0</span> <span>players</span>
+                    </div>
+                    <div id="barbuttons">
+                        <div id="chatbutton" class="barbutton clickable"></div>
+                        <div id="achievementsbutton" class="barbutton clickable"></div>
+                        <div id="helpbutton" class="barbutton clickable"></div>
+                        <div id="mutebutton" class="barbutton clickable active"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-
-                //发起用emit  接收用on
-                socket.emit('online', {user: 'test'+Math.round(Math.random()*10)});
-                socket.on('online', function(obj){
-                    console.log(obj.user + '加入游戏。');
-                });
-                socket.on('outline', function(obj){
-                    console.log(obj.user + '离开游戏。');
-                });
-            };
-        </script>
     </body>
 </html>
